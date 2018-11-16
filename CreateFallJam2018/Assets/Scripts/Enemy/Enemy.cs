@@ -63,10 +63,17 @@ public class Enemy : MonoBehaviour {
 
     }
 
+    public void Damage(float amount)
+    {
+        this.hp -= amount;
+    }
+
     public List<Collider> getColliders() // Get the colliders touching the enemy
     {
         return colliders;
     }
+
+    
 
     private void OnTriggerEnter(Collider other)
     {
