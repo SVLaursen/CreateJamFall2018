@@ -2,46 +2,96 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunController : MonoBehaviour {
-
+public class GunController : MonoBehaviour, WeaponBehavior
+{
+    public bool isSemiAuto;
     public bool isFiring;
     public BulletController bullet;
     public float bulletSpeed;
     public float timeBetweenShots;
     public float shotCounter;
     public Transform firePoint;
+    public float projectileDecay;
+    public int maxAmmo;
+    public int currentAmmo;
+    public int ammoInGun;
+    public int ammoCap;
+    private bool hasShot;
 
-
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (isFiring)
+    public void Reload()
+    {
+        if (currentAmmo > 0)
         {
-            shotCounter -= Time.deltaTime;
-            if(shotCounter <= 0f)
+            currentAmmo -= ammoCap - ammoInGun;
+            ammoInGun = ammoCap;
+        }
+        else
+        {
+            //Not Implemented
+        }
+    }
+
+    public void Shoot()
+    {
+        if (ammoInGun > 0)
+        {
+            if (isSemiAuto)
             {
-                shotCounter = timeBetweenShots;
-                BulletController myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
-                myBullet.speed = bulletSpeed;
+
+                if (!hasShot)
+                {
+                    BulletController myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
+                    myBullet.deathTime = projectileDecay;
+                    myBullet.speed = bulletSpeed;
+                    hasShot = true;
+                }
             }
-        }
-        else
-        {
-            shotCounter = 0f;
+            else
+            {
+                shotCounter -= Time.deltaTime;
+                if (shotCounter <= 0f)
+                {
+                    shotCounter = timeBetweenShots;
+                    BulletController myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
+                    myBullet.deathTime = projectileDecay;
+                    myBullet.speed = bulletSpeed;
+                }
+
+
+            }
+
         }
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            isFiring = true;
-        }
-        else
-        {
-            isFiring = false;
-        }
-	}
+
+
+    }
+
+    public void StopShooting()
+    {
+        hasShot = false;
+        shotCounter = 0f;
+    }
+    public void Special()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Upgrade()
+    {
+        throw new System.NotImplementedException();
+    }
+
+
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }

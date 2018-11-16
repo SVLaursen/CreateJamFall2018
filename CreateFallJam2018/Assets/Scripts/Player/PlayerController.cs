@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 	private Vector3 velocity;
 	private Rigidbody rb;
 
+    public GunController gun;
 	public float moveSpeed = 5f;
 
 	private void Start () {
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour {
 		transform.LookAt (heightCorrectedPoint);
 	}
 
-	private void FixedUpdate() {
+    private void FixedUpdate() {
 		rb.MovePosition (rb.position + velocity * Time.fixedDeltaTime);
 	}
 }
