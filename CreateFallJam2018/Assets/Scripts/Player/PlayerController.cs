@@ -1,54 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
-[RequireComponent(typeof(PlayerInput))]
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent (typeof (Rigidbody))]
 public class PlayerController : MonoBehaviour {
 
-	private CharacterController _controller;
+	Vector3 velocity;
+	Rigidbody rb;
 
-	[Header("Speed Variables")]
-	public float walkSpeed = 3f;
-	public float runSpeed = 4.5f;
-	public float speedSmoothTime = 0.1f;
-	public float gravity = -12f;
-	
-	private float velocitySmoothSpeed;
-	private float currentSpeed;
-	private Vector3 velocity; 
+	public float moveSpeed = 5f;
 
-	[Header("Turning Speed")]
-	public float turnSpeed = 3f;
-	public float runTurnSpeed = 1.5f;
-	
-	private void Start()
-	{
-		_controller = GetComponent<CharacterController>();
+	private void Start () {
+		rb = GetComponent<Rigidbody> ();
 	}
-	
-	public void Movement(Vector2 input, bool sprint)
-	{
-		//Rotation
-		var turnVelocity = 60f * ((sprint) ? runTurnSpeed : turnSpeed);
-		transform.Rotate(0,input.x * turnVelocity * Time.deltaTime,0);
-		
-		//Movement
-		var targetVelocity = ((sprint) ? runSpeed : walkSpeed) * input.y;
-		currentSpeed = Mathf.SmoothDamp(currentSpeed, targetVelocity, ref velocitySmoothSpeed, speedSmoothTime);
-		velocity = transform.forward * currentSpeed + Vector3.up * velocity.y;
-		
-		_controller.Move(velocity * Time.deltaTime);
-		currentSpeed = new Vector2(_controller.velocity.x, _controller.velocity.z).magnitude;
-		
-		//Checks gravity
-		velocity.y = ((_controller.isGrounded) ? 0 : velocity.y + Time.deltaTime * gravity);
+
+	public void Move(Vector3 input) {
+		Vector3 _velocity = input.normalized * moveSpeed;
+		velocity = _velocity;
 	}
-	
-	public void Interact(bool interact)
-	{
-		if (!interact) return;
-		
-		
+
+	public void LookAt(Vector3 lookPoint) {
+		Vector3 heightCorrectedPoint = new Vector3 (lookPoint.x, transform.position.y, lookPoint.z);
+		transform.LookAt (heightCorrectedPoint);
+	}
+
+	void FixedUpdate() {
+		rb.MovePosition (rb.position + velocity * Time.fixedDeltaTime);
+
 	}
 }

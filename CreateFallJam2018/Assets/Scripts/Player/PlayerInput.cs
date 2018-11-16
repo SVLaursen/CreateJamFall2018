@@ -16,10 +16,7 @@ public class PlayerInput : MonoBehaviour
 		if (!paused)
 		{
 			//Movement
-			_playerController.Movement(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")), Input.GetButton("Sprint"));
-		
-			//Interact
-			_playerController.Interact(Input.GetButtonDown("Interact"));
+			_playerController.Move(new Vector3(Input.GetAxisRaw("Horizontal"),0 , Input.GetAxisRaw("Vertical")));
 		}
 	}
 }

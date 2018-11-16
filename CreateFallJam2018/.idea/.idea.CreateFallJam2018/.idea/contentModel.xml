@@ -7,6 +7,7 @@
       <e p="Assets" t="Include">
         <e p="Editor" t="Include">
           <e p="FieldOfViewEditor.cs" t="Include" />
+          <e p="RoomViewEditor.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
           <e p="Camera" t="Include">
@@ -20,6 +21,9 @@
           <e p="Player" t="Include">
             <e p="PlayerController.cs" t="Include" />
             <e p="PlayerInput.cs" t="Include" />
+          </e>
+          <e p="World" t="Include">
+            <e p="RoomView.cs" t="Include" />
           </e>
         </e>
         <e p="Shaders" t="Include">
