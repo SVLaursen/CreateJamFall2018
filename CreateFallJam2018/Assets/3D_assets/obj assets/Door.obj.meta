@@ -8,6 +8,7 @@ ModelImporter:
     400000: //RootNode
     400002: pSphere2
     2100000: initialShadingGroup
+    2100002: lambert4SG
     2300000: pSphere2
     3300000: pSphere2
     4300000: pSphere2
