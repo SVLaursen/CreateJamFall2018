@@ -30,6 +30,15 @@ public class PlayerInput : MonoBehaviour
 				//Debug.DrawLine(ray.origin,point,Color.red);
 				_playerController.LookAt(point);
 			}
+            if (Input.GetMouseButton(0))
+            {
+                _playerController.gun.Shoot();
+            }
+            else if (!Input.GetMouseButton(0))
+            {
+                _playerController.gun.StopShooting();
+            }
+
 		}
 	}
 }
