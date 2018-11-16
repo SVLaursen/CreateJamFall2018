@@ -4,8 +4,8 @@ using System.Collections;
 [RequireComponent (typeof (Rigidbody))]
 public class PlayerController : MonoBehaviour {
 
-	Vector3 velocity;
-	Rigidbody rb;
+	private Vector3 velocity;
+	private Rigidbody rb;
 
 	public float moveSpeed = 5f;
 
@@ -23,8 +23,7 @@ public class PlayerController : MonoBehaviour {
 		transform.LookAt (heightCorrectedPoint);
 	}
 
-	void FixedUpdate() {
+	private void FixedUpdate() {
 		rb.MovePosition (rb.position + velocity * Time.fixedDeltaTime);
-
 	}
 }
