@@ -6,11 +6,13 @@ public class PlayerInput : MonoBehaviour
 	
 	private PlayerController _playerController;
 	private Camera _viewCamera;
+	private BuildMechanic _buildMechanic;
     
 	private void Awake ()
 	{
 		_playerController = GetComponent<PlayerController>();
 		_viewCamera = FindObjectOfType<Camera>();
+		_buildMechanic = FindObjectOfType<BuildMechanic>();
 	}
 	
 	private void Update ()
@@ -30,6 +32,9 @@ public class PlayerInput : MonoBehaviour
 				//Debug.DrawLine(ray.origin,point,Color.red);
 				_playerController.LookAt(point);
 			}
+			
+			//Build Mechanic
+			if(Input.GetButton("Build")) _buildMechanic.BuildWall();
 		}
 	}
 }
