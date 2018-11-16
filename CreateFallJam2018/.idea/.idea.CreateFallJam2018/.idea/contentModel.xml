@@ -10,9 +10,16 @@
           <e p="RoomViewEditor.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
+          <e p="BuildMechanic" t="Include">
+            <e p="BuildMechanic.cs" t="Include" />
+          </e>
           <e p="Camera" t="Include">
             <e p="CameraFollow.cs" t="Include" />
             <e p="CameraShake.cs" t="Include" />
+          </e>
+          <e p="Guns" t="Include">
+            <e p="BulletController.cs" t="Include" />
+            <e p="GunController.cs" t="Include" />
           </e>
           <e p="Modular" t="Include">
             <e p="FieldOfView.cs" t="Include" />
