@@ -17,9 +17,16 @@
             <e p="CameraFollow.cs" t="Include" />
             <e p="CameraShake.cs" t="Include" />
           </e>
+          <e p="Enemy" t="Include">
+            <e p="Enemy.cs" t="Include" />
+            <e p="EnemyManager.cs" t="Include" />
+          </e>
           <e p="Guns" t="Include">
             <e p="BulletController.cs" t="Include" />
             <e p="GunController.cs" t="Include" />
+            <e p="Interfaces" t="Include">
+              <e p="WeaponBehavior.cs" t="Include" />
+            </e>
           </e>
           <e p="Modular" t="Include">
             <e p="FieldOfView.cs" t="Include" />
@@ -28,6 +35,9 @@
           <e p="Player" t="Include">
             <e p="PlayerController.cs" t="Include" />
             <e p="PlayerInput.cs" t="Include" />
+          </e>
+          <e p="UI" t="Include">
+            <e p="HUD.cs" t="Include" />
           </e>
           <e p="World" t="Include">
             <e p="RoomView.cs" t="Include" />
