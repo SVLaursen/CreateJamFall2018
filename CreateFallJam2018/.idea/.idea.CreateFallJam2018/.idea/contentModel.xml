@@ -24,6 +24,7 @@
           </e>
           <e p="Guns" t="Include">
             <e p="BulletController.cs" t="Include" />
+            <e p="Explosion.cs" t="Include" />
             <e p="GunController.cs" t="Include" />
             <e p="Interfaces" t="Include">
               <e p="WeaponBehavior.cs" t="Include" />
