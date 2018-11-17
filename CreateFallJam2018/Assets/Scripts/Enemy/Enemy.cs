@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour {
 
     private List<Collider> colliders = new List<Collider>();
 
+    public GameObject floatingTextPrefab;
+
     public int level;
 
     public float hp = 100;
@@ -49,6 +51,12 @@ public class Enemy : MonoBehaviour {
             Destroy(gameObject);
         }
 	}
+
+    void showFloatingText(int dmg)
+    {
+        GameObject text = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+        text.GetComponent<TextMesh>().text = hp.ToString();
+    }
 
     public void setTarget(GameObject target)
     {
