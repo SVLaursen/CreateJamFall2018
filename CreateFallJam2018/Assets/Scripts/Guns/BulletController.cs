@@ -26,6 +26,10 @@ public class BulletController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        pointToFace.x = pointToFace.x * 20;
+        pointToFace.z = pointToFace.z * 20;
+
         transform.position = Vector3.MoveTowards(transform.position, pointToFace, speed * Time.deltaTime);
         lifeTime += Time.deltaTime;
         if(lifeTime >= deathTime)
