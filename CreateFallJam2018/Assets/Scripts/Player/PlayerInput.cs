@@ -38,11 +38,11 @@ public class PlayerInput : MonoBehaviour
             }
             if (Input.GetMouseButton(0))
             {
-                _playerController.gun.Shoot(_playerController.gun.id);
+                _playerController.gun.Shoot(_playerController.gun._id);
             }
             else if (!Input.GetMouseButton(0))
             {
-                _playerController.gun.StopShooting(_playerController.gun.id);
+                _playerController.gun.StopShooting(_playerController.gun._id);
             }
             if(Input.GetKeyDown(KeyCode.R))
             {

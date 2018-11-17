@@ -38,4 +38,18 @@ public class PlayerController : MonoBehaviour {
 	    animator.SetBool("isMoving", isMoving);
 		rb.MovePosition (rb.position + velocity * Time.fixedDeltaTime);
 	}
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "EXPLOSION")
+        {
+            Physics.IgnoreCollision(collision.collider, this.GetComponent<Collider>(), true);
+        }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "EXPLOSION")
+        {
+            Physics.IgnoreCollision(collision.collider, this.GetComponent<Collider>(), true);
+        }
+    }
 }

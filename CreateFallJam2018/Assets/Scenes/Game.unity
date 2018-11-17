@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -314,6 +314,74 @@ Prefab:
       propertyPath: HUDObject
       value: 
       objectReference: {fileID: 165017373}
+    - target: {fileID: 4886964197854834, guid: 3341bc6e415bc426cb4778c4332b4f0b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.349
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: maxAmmo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: ammoCap.Array.data[1]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: ammoCap.Array.data[2]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: damage.Array.data[2]
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: bulletSpeed.Array.data[2]
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: maxAmmo.Array.data[1]
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: maxAmmo.Array.data[2]
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: ammo.Array.data[1].x
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: ammo.Array.data[1].y
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: ammo.Array.data[2].x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: ammo.Array.data[2].y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 54657244599897798, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851100306016326, guid: 3341bc6e415bc426cb4778c4332b4f0b, type: 2}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3341bc6e415bc426cb4778c4332b4f0b, type: 2}
   m_IsPrefabAsset: 0
@@ -342,7 +410,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 165017373}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d0fe2856acf18c4ebf7775a6458636d, type: 3}
   m_Name: 
