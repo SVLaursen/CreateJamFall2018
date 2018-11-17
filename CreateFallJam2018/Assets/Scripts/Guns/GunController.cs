@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GunController : MonoBehaviour, WeaponBehavior
 {
@@ -28,7 +29,7 @@ public class GunController : MonoBehaviour, WeaponBehavior
     private IEnumerator _reloadTime;
 
     private CameraShake camShake;
-    public List<CameraShake.Properties> shakerProperties;
+    public CameraShake.Properties shakerProperties;
 
     private void Awake()
     {
@@ -66,10 +67,12 @@ public class GunController : MonoBehaviour, WeaponBehavior
                 {
                     slingShotCharge += Time.deltaTime;
                 }
-                camShake.StartShake(shakerProperties[0]);
+                camShake.StartShake(shakerProperties);
                 break;
 
-            case 1: //NerfGun
+            /*
+             * case 1: //NerfGun
+             
                 if (ammoInGun > 0)
                 {
                     if (isSemiAuto)
@@ -82,7 +85,6 @@ public class GunController : MonoBehaviour, WeaponBehavior
                             myBullet.speed = bulletSpeed;
                             myBullet.damage = damage;
                             ammoInGun--;
-                            camShake.StartShake(shakerProperties[1]);
                             hasShot = true;
                         }
                     }
@@ -102,7 +104,7 @@ public class GunController : MonoBehaviour, WeaponBehavior
                     }
                 }
                 break;
-
+*/
         }
 
 
@@ -171,7 +173,6 @@ public class GunController : MonoBehaviour, WeaponBehavior
         if (id == 1) //Nerfgun
         {
             isSemiAuto = false;
-
         }
         if (id == 2) //Launcher
         {
