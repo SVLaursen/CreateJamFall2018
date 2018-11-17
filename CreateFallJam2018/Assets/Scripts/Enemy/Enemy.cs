@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () { 
         if (colliders.Count != 0) {
-            Debug.Log(colliders);
+            Attack(colliders[0].gameObject, ad);
         }
         
         if (target)
@@ -64,11 +64,6 @@ public class Enemy : MonoBehaviour {
         return (param + (level * level / 2));
     }
 
-    public void Hit(GameObject target)
-    {
-
-    }
-
     public void Damage(float amount)
     {
         this.hp -= amount;
@@ -76,7 +71,15 @@ public class Enemy : MonoBehaviour {
 
     private void Attack(GameObject target, float amount)
     {
+        if (target.tag == "PLAYER")
+        {
+            PlayerStats p = target.GetComponent<PlayerStats>();
+            p.Damage(amount);
+        }
+        if (target.tag == "")
+        {
 
+        }
     }
 
     public List<Collider> getColliders() // Get the colliders touching the enemy
