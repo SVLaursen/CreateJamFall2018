@@ -141,7 +141,7 @@ public class GunController : MonoBehaviour, WeaponBehavior
     // Use this for initialization
     void Start()
     {
-
+        onWeaponChange(0);
     }
 
     public void Awake()
@@ -156,24 +156,26 @@ public class GunController : MonoBehaviour, WeaponBehavior
     }
     public void onWeaponChange(int id)
     {
+        this.id = id;
+        ammoCap = player.ammoCap[id];
+        maxAmmo = player.maxAmmo[id];
+        currentAmmo = player.ammo[id].x;
+        ammoInGun = player.ammo[id].y;
+        damage = player.damage[id];
+        bulletSpeed = player.bulletSpeed[id];
 
         if (id == 0) //Slingshot
         {
-
+            isSemiAuto = true;
         }
         if (id == 1) //Nerfgun
         {
-            isSemiAuto = true;
-            ammoCap = 30;
-            maxAmmo = ammoCap * 10;
-            currentAmmo = player.ammo[1].x;
-            ammoInGun = player.ammo[1].y;
-            damage = player.damage[1];
+            isSemiAuto = false;
+
         }
         if (id == 2) //Launcher
         {
 
         }
-        this.id = id;
     }
 }

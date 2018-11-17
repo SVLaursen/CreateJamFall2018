@@ -7,10 +7,13 @@ public class PlayerController : MonoBehaviour {
 
 	private Vector3 velocity;
 	private Rigidbody rb;
-    //public int[][] ammo;
-    public List<Vector2> ammo;
-    public float[] damage;
     public GunController gun;
+
+    public List<Vector2> ammo;
+    public List<float> bulletSpeed;
+    public List<float> damage;
+    public List<float> maxAmmo;
+    public List<float> ammoCap;
 	public float moveSpeed = 5f;
 
 	private void Start () {
