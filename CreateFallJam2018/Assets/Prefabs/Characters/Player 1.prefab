@@ -260,15 +260,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSemiAuto: 0
   isFiring: 0
-  bullet: {fileID: 0}
+  bullets: []
+  player: {fileID: 0}
   bulletSpeed: 20
   timeBetweenShots: 0.2
   firePoint: {fileID: 4643183266973692}
   projectileDecay: 1
   maxAmmo: 100
+  currentAmmo: 0
   ammoInGun: 100
   ammoCap: 100
+  hasShot: 0
   damage: 1
+  reloadTime: 0
+  id: 0
+  slingShotCharge: 0
+  maxCharge: 0
 --- !u!114 &114908341912655546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,6 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119ff35968ed24f66af3ae3597c5f9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ammo: []
+  damage: []
   gun: {fileID: 114826712749437016}
   moveSpeed: 15
 --- !u!136 &136856837427469014

@@ -203,5 +203,11 @@ MonoBehaviour:
   currentEnemies: []
   spawners: []
   hasSpawned: 1
+  waveDuration: 30
+  waveTimeLeft: 0
+  timeToChill: 20
+  chillTimeLeft: 0
+  isInWave: 0
   waveTimer: 3
+  spawnAmount: 0
   waveCounter: 0
