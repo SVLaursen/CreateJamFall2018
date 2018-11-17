@@ -135,13 +135,17 @@ public class HUD : MonoBehaviour
 
     public void spawnPowerUp()
     {
-        gunPrefab = gunPrefabs[Random.Range(0, gunPrefabs.Length)];
-        Vector3 planeSize = plane.GetComponent<Collider>().bounds.size;
-        Vector3 planePosition = plane.transform.position;
-        Vector3 newPos = new Vector3(Random.Range(planePosition.x-planeSize.x/2, planePosition.x+planeSize.x/2), planeSize.y, Random.Range(planePosition.z - planeSize.z / 2, planePosition.z + planeSize.z / 2));
-        GameObject swag = Instantiate(gunPrefab, newPos, Quaternion.identity) as GameObject;
-        powerUpsObjects.Add(swag);
-        timeSinceSpawned.Add(powerUpLifetime);
+        if (gunPrefab)
+        {
+            gunPrefab = gunPrefabs[Random.Range(0, gunPrefabs.Length)];
+            Vector3 planeSize = plane.GetComponent<Collider>().bounds.size;
+            Vector3 planePosition = plane.transform.position;
+            Vector3 newPos = new Vector3(Random.Range(planePosition.x - planeSize.x / 2, planePosition.x + planeSize.x / 2), planeSize.y, Random.Range(planePosition.z - planeSize.z / 2, planePosition.z + planeSize.z / 2));
+            GameObject swag = Instantiate(gunPrefab, newPos, Quaternion.identity) as GameObject;
+            powerUpsObjects.Add(swag);
+            timeSinceSpawned.Add(powerUpLifetime);
+        }
+        
     }
 
     public void deletePowerUp(GameObject inputPowerUp)

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public interface WeaponBehavior {
 
-    void Shoot();
-    void StopShooting();
+    void Shoot(int k);
+    void StopShooting(int k);
     void Reload();
     void Upgrade();
     void Special();

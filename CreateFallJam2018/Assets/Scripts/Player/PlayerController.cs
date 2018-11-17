@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent (typeof (Rigidbody))]
 public class PlayerController : MonoBehaviour {
 
 	private Vector3 velocity;
 	private Rigidbody rb;
-
+    //public int[][] ammo;
+    public List<Vector2> ammo;
+    public float[] damage;
     public GunController gun;
 	public float moveSpeed = 5f;
 
