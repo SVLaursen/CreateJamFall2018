@@ -107,13 +107,6 @@ public class GunController : MonoBehaviour, WeaponBehavior
 */
         }
 
-                    }
-                }
-                break;
-
-        }
-
-
     }
 
     public void StopShooting(int k)

@@ -15,16 +15,12 @@ public class HUD : MonoBehaviour
     private float nextActionTime = 0.0f;
     public float powerUpLifetime;
     private List<GameObject> powerUpsObjects;
-    private static List<float> timeSinceSpawned;
+    private List<float> timeSinceSpawned;
 
     // HUD Text Objects
     public Text waveText;
     public Text scoreText;
-    public Text HPText;
-
-    private static string waveInitText;
-    private static string scoreInitText;
-    private static string healthInitText;
+    public Slider hpSlider;
 
     //public static HUD instance;
     [Header("Player Shizzle")]
@@ -35,22 +31,21 @@ public class HUD : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        waveInitText = waveText.text;
-        scoreInitText = scoreText.text;
-        healthInitText = HPText.text;
         powerUpsObjects = new List<GameObject>();
         timeSinceSpawned = new List<float>();
         powerUpLifetime = 10.0f;
+        score = 0;
+        wave = 0;
     }
 
     // Update is called once per frame
     private void Update()
     {
         //waveText.text = waveText.text.Substring(0, waveText.text.Length-wave.ToString().Length) + wave.ToString();
-        waveText.text = waveInitText + wave.ToString();
-        scoreText.text = scoreInitText + score.ToString();
-        HPText.text = healthInitText + health.ToString();
+        waveText.text = "Wave: " + wave;
+        scoreText.text = "Score: " + score;
 
+        hpSlider.value = health;
 
         timeUntilSpawn -= Time.deltaTime;
         if (timeUntilSpawn <= 0)
