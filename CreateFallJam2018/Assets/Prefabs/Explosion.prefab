@@ -49,10 +49,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1656922051837196}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b47bc535dff7a294aaba8af4ca41cc29, type: 3}
+  m_Script: {fileID: 11500000, guid: 55b611053a58ec94cbbc7b0794893347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 0
 --- !u!135 &135329691076085658
 SphereCollider:
   m_ObjectHideFlags: 1
