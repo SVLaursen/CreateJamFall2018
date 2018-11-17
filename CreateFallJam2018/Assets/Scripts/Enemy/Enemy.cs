@@ -85,9 +85,10 @@ public class Enemy : MonoBehaviour {
             PlayerStats p = target.GetComponent<PlayerStats>();
             p.Damage(amount);
         }
-        if (target.tag == "")
+        if (target.tag == "PILLOWWALL")
         {
-
+            PillowWall p = target.GetComponent<PillowWall>();
+            p.DamageWall();
         }
     }
 
