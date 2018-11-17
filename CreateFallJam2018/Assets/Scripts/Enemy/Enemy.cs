@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour {
 
     public int level;
 
-    public float hp = 1;
+    public float hp = 100;
     public float ad = 1;
     public float ag = 1;
 
@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "ENEMY")
+        if (other.gameObject.tag == "PLAYER")
         {
             
             if (!colliders.Contains(other))
