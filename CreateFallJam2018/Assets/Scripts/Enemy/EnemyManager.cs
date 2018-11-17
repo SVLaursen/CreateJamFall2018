@@ -15,6 +15,7 @@ public class EnemyManager : MonoBehaviour {
     public bool hasSpawned = true;
 
     public float waveTimer = 3;
+    public int spawnAmount = 0;
     public int waveCounter = 0;
 
     private float timeLeft;
@@ -37,15 +38,21 @@ public class EnemyManager : MonoBehaviour {
 		if (hasSpawned == false)
         {
             waveCounter += 1;
-            SpawnWave(spawners, 10);
+            SpawnWave(spawners, spawnAmount);
             hasSpawned = true;
         }
 	}
 
     void SpawnWave(List<GameObject> spawners, int amount)
     {
-
-        for (int i = 0; i < amount; i++)
+        for (int i = 0; i < spawners.Count; i++)
+        {
+            for (int j = 0; j < amount / spawners.Count; j++)
+            {
+                SpawnOneEnemy(enemy, spawners[i].transform, player);
+            }
+        }
+        for (int i = 0; i < amount / spawners.Count; i++)
         {
             int currentSpawner = Random.Range(0, spawners.Count);
             SpawnOneEnemy(enemy, spawners[currentSpawner].transform, player);
