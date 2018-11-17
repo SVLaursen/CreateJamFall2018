@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -220,11 +220,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d0fe2856acf18c4ebf7775a6458636d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunPrefabs: []
+  spawnCooldown: 3
+  plane: {fileID: 0}
+  powerUpLifetime: 0
   waveShit: {fileID: 61923614}
   scoreShit: {fileID: 1424285177}
-  health: 100
-  wave: 1
-  score: 500
 --- !u!114 &165017375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,6 +520,21 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: ammo.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: damage.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: bullets.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4483321467698054, guid: 3341bc6e415bc426cb4778c4332b4f0b, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -557,6 +573,69 @@ Prefab:
       value: 
       objectReference: {fileID: 114172036910067504, guid: d4dd38c8f0a7447c0a34fc00e0f7a4d1,
         type: 2}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 960397452}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: bullets.Array.data[0]
+      value: 
+      objectReference: {fileID: 114910523488394220, guid: d4dd38c8f0a7447c0a34fc00e0f7a4d1,
+        type: 2}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: bullets.Array.data[1]
+      value: 
+      objectReference: {fileID: 114910523488394220, guid: d4dd38c8f0a7447c0a34fc00e0f7a4d1,
+        type: 2}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: bullets.Array.data[2]
+      value: 
+      objectReference: {fileID: 114910523488394220, guid: d4dd38c8f0a7447c0a34fc00e0f7a4d1,
+        type: 2}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: maxCharge
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: ammo.Array.data[0].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: ammo.Array.data[1].x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: ammo.Array.data[1].y
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: damage.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: damage.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: bulletSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: projectileDecay
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3341bc6e415bc426cb4778c4332b4f0b, type: 2}
   m_IsPrefabAsset: 0
@@ -722,7 +801,7 @@ Prefab:
     - target: {fileID: 114845744629866918, guid: 1e2eb9b2953614f3db5a300f5f8be797,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1607605514765494, guid: 1e2eb9b2953614f3db5a300f5f8be797, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -777,7 +856,7 @@ Prefab:
     - target: {fileID: 114845744629866918, guid: 1e2eb9b2953614f3db5a300f5f8be797,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1014711156363742, guid: 1e2eb9b2953614f3db5a300f5f8be797, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -815,6 +894,11 @@ MonoBehaviour:
   - {fileID: 1992267288}
   - {fileID: 694427028}
   hasSpawned: 1
+  waveDuration: 30
+  waveTimeLeft: 0
+  timeToChill: 20
+  chillTimeLeft: 0
+  isInWave: 0
   waveTimer: 5
   spawnAmount: 1
   waveCounter: 0
@@ -868,7 +952,7 @@ Prefab:
     - target: {fileID: 114845744629866918, guid: 1e2eb9b2953614f3db5a300f5f8be797,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1607605514765494, guid: 1e2eb9b2953614f3db5a300f5f8be797, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -886,6 +970,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1851100306016326, guid: 3341bc6e415bc426cb4778c4332b4f0b,
     type: 2}
   m_PrefabInternal: {fileID: 640817425}
+--- !u!114 &960397452 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114908341912655546, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+    type: 2}
+  m_PrefabInternal: {fileID: 640817425}
+  m_Script: {fileID: 11500000, guid: 119ff35968ed24f66af3ae3597c5f9b0, type: 3}
 --- !u!114 &960397457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -898,6 +988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
+  HUDObject: {fileID: 0}
 --- !u!1001 &961046716
 Prefab:
   m_ObjectHideFlags: 0
@@ -1018,7 +1109,7 @@ Prefab:
     - target: {fileID: 114845744629866918, guid: 1e2eb9b2953614f3db5a300f5f8be797,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1607605514765494, guid: 1e2eb9b2953614f3db5a300f5f8be797, type: 2}
       propertyPath: m_StaticEditorFlags
