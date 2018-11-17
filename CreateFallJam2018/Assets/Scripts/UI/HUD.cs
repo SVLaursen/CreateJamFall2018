@@ -19,10 +19,12 @@ public class HUD : MonoBehaviour
 
     // HUD Text Objects
     public Text waveText;
-    public  Text scoreText;
+    public Text scoreText;
+    public Text HPText;
 
     private static string waveInitText;
     private static string scoreInitText;
+    private static string healthInitText;
 
     //public static HUD instance;
     [Header("Player Shizzle")]
@@ -35,6 +37,7 @@ public class HUD : MonoBehaviour
     {
         waveInitText = waveText.text;
         scoreInitText = scoreText.text;
+        healthInitText = HPText.text;
         powerUpsObjects = new List<GameObject>();
         timeSinceSpawned = new List<float>();
         powerUpLifetime = 10.0f;
@@ -46,6 +49,7 @@ public class HUD : MonoBehaviour
         //waveText.text = waveText.text.Substring(0, waveText.text.Length-wave.ToString().Length) + wave.ToString();
         waveText.text = waveInitText + wave.ToString();
         scoreText.text = scoreInitText + score.ToString();
+        HPText.text = healthInitText + health.ToString();
 
 
         timeUntilSpawn -= Time.deltaTime;
