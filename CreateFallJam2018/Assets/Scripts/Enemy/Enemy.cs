@@ -33,6 +33,11 @@ public class Enemy : MonoBehaviour {
         {
             updateTargetPos(target); // Update the target -> keep on player if he moves
         }
+
+        if(hp <= 0)
+        {
+            Destroy(this.gameObject);
+        }
 	}
 
     public void setTarget(GameObject target)

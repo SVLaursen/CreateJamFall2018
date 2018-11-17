@@ -7,7 +7,7 @@ public class PlayerInput : MonoBehaviour
 	private PlayerController _playerController;
 	private Camera _viewCamera;
 	private BuildMechanic _buildMechanic;
-    
+    public Vector3 point;
 	private void Awake ()
 	{
 		_playerController = GetComponent<PlayerController>();
@@ -28,7 +28,7 @@ public class PlayerInput : MonoBehaviour
 			float rayDistance;
 
 			if (groundPlane.Raycast(ray,out rayDistance)) {
-				Vector3 point = ray.GetPoint(rayDistance);
+				point = ray.GetPoint(rayDistance);
 				//Debug.DrawLine(ray.origin,point,Color.red);
 				_playerController.LookAt(point);
 			}

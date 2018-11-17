@@ -9,14 +9,18 @@ public class GunController : MonoBehaviour, WeaponBehavior
     public BulletController bullet;
     public float bulletSpeed;
     public float timeBetweenShots;
-    public float shotCounter;
+    private float shotCounter;
     public Transform firePoint;
     public float projectileDecay;
     public int maxAmmo;
-    public int currentAmmo;
+    private int currentAmmo;
     public int ammoInGun;
     public int ammoCap;
     private bool hasShot;
+    public float damage;
+    public Vector3 pointToFace{ get; set; }
+
+    private Camera viewCam;
 
     public void Reload()
     {
@@ -43,6 +47,8 @@ public class GunController : MonoBehaviour, WeaponBehavior
                     BulletController myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
                     myBullet.deathTime = projectileDecay;
                     myBullet.speed = bulletSpeed;
+                    myBullet.damage = damage;
+                    ammoInGun--;
                     hasShot = true;
                 }
             }
@@ -55,9 +61,9 @@ public class GunController : MonoBehaviour, WeaponBehavior
                     BulletController myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
                     myBullet.deathTime = projectileDecay;
                     myBullet.speed = bulletSpeed;
+                    myBullet.damage = damage;
+                    ammoInGun--;
                 }
-
-
             }
 
         }
@@ -89,9 +95,14 @@ public class GunController : MonoBehaviour, WeaponBehavior
 
     }
 
+    public void Awake()
+    {
+        viewCam = FindObjectOfType<Camera>();
+    }
     // Update is called once per frame
     void Update()
     {
+
 
     }
 }
