@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PLAYER
   - ENEMY
+  - PILLOWWALL
   layers:
   - Default
   - TransparentFX
