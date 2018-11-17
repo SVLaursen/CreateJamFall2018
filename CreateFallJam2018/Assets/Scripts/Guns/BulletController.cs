@@ -31,20 +31,15 @@ public class BulletController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        pointToFace.x = pointToFace.x * 20;
-        pointToFace.z = pointToFace.z * 20;
-
-        transform.position = Vector3.MoveTowards(transform.position, pointToFace, speed * Time.deltaTime);
+        Vector3 t = new Vector3(0, 0, 1);
+        Debug.DrawLine(this.transform.position, this.transform.forward*40, Color.red);
+        transform.Translate(t * speed * Time.deltaTime);
         lifeTime += Time.deltaTime;
         if(lifeTime >= deathTime)
         {
             Destroy(this.gameObject);
         }
-        if(transform.position == pointToFace)
-        {
-            Destroy(this.gameObject);
-        }
+      
     }
 
     private void OnCollisionEnter(Collision collision)
