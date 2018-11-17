@@ -2243,10 +2243,8 @@ MonoBehaviour:
   player: {fileID: 960397449}
   currentEnemies: []
   spawners:
-  - {fileID: 0}
   - {fileID: 251397371}
   - {fileID: 1992267288}
-  - {fileID: 0}
   hasSpawned: 1
   waveDuration: 30
   waveTimeLeft: 0
