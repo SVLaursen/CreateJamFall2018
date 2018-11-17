@@ -42,7 +42,6 @@ public class EnemyManager : MonoBehaviour {
             waveTimeLeft -= Time.deltaTime;
             if (waveTimeLeft > 0)
             {
-                Debug.Log(timeLeft);
                 timeLeft -= Time.deltaTime;
                 if (timeLeft < 0)
                 {
