@@ -33,6 +33,11 @@ public class Enemy : MonoBehaviour {
         {
             updateTargetPos(target); // Update the target -> keep on player if he moves
         }
+
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+        }
 	}
 
     public void setTarget(GameObject target)
@@ -66,6 +71,11 @@ public class Enemy : MonoBehaviour {
     public void Damage(float amount)
     {
         this.hp -= amount;
+    }
+
+    private void Attack(GameObject target, float amount)
+    {
+
     }
 
     public List<Collider> getColliders() // Get the colliders touching the enemy
