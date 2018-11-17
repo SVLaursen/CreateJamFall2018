@@ -63,6 +63,10 @@ public class BulletController : MonoBehaviour {
             }
             
         }
+        if(collision.gameObject.tag == "PILLOWWALL")
+        {
+            Physics.IgnoreCollision(collision.collider, this.GetComponent<Collider>(), true);
+        }
        // Destroy(gameObject);
     }
     public void Awake()

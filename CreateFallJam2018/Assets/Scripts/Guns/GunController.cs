@@ -27,6 +27,14 @@ public class GunController : MonoBehaviour, WeaponBehavior
     public Vector3 pointToFace { get; set; }
     private IEnumerator _reloadTime;
 
+    private CameraShake camShake;
+    public List<CameraShake.Properties> shakerProperties;
+
+    private void Awake()
+    {
+        camShake = FindObjectOfType<CameraShake>().GetComponent<CameraShake>();
+    }
+    
     public void Reload()
     {
         _reloadTime = WaitTime(reloadTime);
@@ -57,8 +65,8 @@ public class GunController : MonoBehaviour, WeaponBehavior
                 if (slingShotCharge <= maxCharge)
                 {
                     slingShotCharge += Time.deltaTime;
-                    
                 }
+                camShake.StartShake(shakerProperties[0]);
                 break;
 
             case 1: //NerfGun
@@ -74,6 +82,7 @@ public class GunController : MonoBehaviour, WeaponBehavior
                             myBullet.speed = bulletSpeed;
                             myBullet.damage = damage;
                             ammoInGun--;
+                            camShake.StartShake(shakerProperties[1]);
                             hasShot = true;
                         }
                     }
@@ -88,6 +97,7 @@ public class GunController : MonoBehaviour, WeaponBehavior
                             myBullet.speed = bulletSpeed;
                             myBullet.damage = damage;
                             ammoInGun--;
+                            camShake.StartShake(shakerProperties[2]);
                         }
                     }
                 }
@@ -141,39 +151,31 @@ public class GunController : MonoBehaviour, WeaponBehavior
     // Use this for initialization
     void Start()
     {
-
-    }
-
-    public void Awake()
-    {
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
-
-
-    }
+        onWeaponChange(0);
+    } 
+    
     public void onWeaponChange(int id)
     {
+        this.id = id;
+        ammoCap = player.ammoCap[id];
+        maxAmmo = player.maxAmmo[id];
+        currentAmmo = player.ammo[id].x;
+        ammoInGun = player.ammo[id].y;
+        damage = player.damage[id];
+        bulletSpeed = player.bulletSpeed[id];
 
         if (id == 0) //Slingshot
         {
-
+            isSemiAuto = true;
         }
         if (id == 1) //Nerfgun
         {
-            isSemiAuto = true;
-            ammoCap = 30;
-            maxAmmo = ammoCap * 10;
-            currentAmmo = player.ammo[1].x;
-            ammoInGun = player.ammo[1].y;
-            damage = player.damage[1];
+            isSemiAuto = false;
+
         }
         if (id == 2) //Launcher
         {
 
         }
-        this.id = id;
     }
 }
