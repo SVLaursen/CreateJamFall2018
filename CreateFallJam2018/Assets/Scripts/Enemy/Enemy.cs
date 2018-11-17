@@ -17,6 +17,9 @@ public class Enemy : MonoBehaviour {
     public float ad = 1;
     public float ag = 1;
 
+    public float attackSpeed;
+    private float timeLeft;
+
 	// Use this for initialization
 	void Start () {
         agent = GetComponent<NavMeshAgent>();
@@ -26,7 +29,13 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () { 
         if (colliders.Count != 0) {
-            Attack(colliders[0].gameObject, ad);
+            timeLeft -= Time.deltaTime;
+            if (timeLeft < 0)
+            {
+                Attack(colliders[0].gameObject, ad);
+                timeLeft = attackSpeed;
+            }
+            
         }
         
         if (target)
@@ -93,7 +102,7 @@ public class Enemy : MonoBehaviour {
     {
         if (other.gameObject.tag == "PLAYER")
         {
-            
+            timeLeft = attackSpeed;
             if (!colliders.Contains(other))
             {
                 colliders.Add(other);

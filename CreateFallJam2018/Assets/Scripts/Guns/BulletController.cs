@@ -10,6 +10,11 @@ public class BulletController : MonoBehaviour {
     public float damage;
     private Camera viewCam;
     private Vector3 pointToFace;
+
+    public int type = 0;
+
+    public GameObject impact;
+
     // Use this for initialization
     void Start () {
         Ray cameraRay = viewCam.ScreenPointToRay(Input.mousePosition);
@@ -26,6 +31,10 @@ public class BulletController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        pointToFace.x = pointToFace.x * 20;
+        pointToFace.z = pointToFace.z * 20;
+
         transform.position = Vector3.MoveTowards(transform.position, pointToFace, speed * Time.deltaTime);
         lifeTime += Time.deltaTime;
         if(lifeTime >= deathTime)
@@ -42,9 +51,18 @@ public class BulletController : MonoBehaviour {
     {
         if(collision.gameObject.tag == "ENEMY")
         {
-            collision.gameObject.GetComponent<Enemy>().Damage(damage);
-            Destroy(gameObject);
-            return;
+            if (type == 0)
+            {
+                collision.gameObject.GetComponent<Enemy>().Damage(damage);
+                Destroy(gameObject);
+                return;
+            }
+            if (type == 1)
+            {
+                GameObject explosion = (GameObject)Instantiate(impact, collision.transform);
+                
+            }
+            
         }
        // Destroy(gameObject);
     }
