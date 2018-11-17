@@ -130,6 +130,7 @@ MonoBehaviour:
   hp: 10
   ad: 1
   ag: 1
+  attackSpeed: 1.2
 --- !u!135 &135260522113859318
 SphereCollider:
   m_ObjectHideFlags: 1

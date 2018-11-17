@@ -45,18 +45,22 @@ public class EnemyManager : MonoBehaviour {
 
     void SpawnWave(List<GameObject> spawners, int amount)
     {
-        for (int i = 0; i < spawners.Count; i++)
+        if (spawners.Count != 0)
         {
-            for (int j = 0; j < amount / spawners.Count; j++)
+            for (int i = 0; i < spawners.Count; i++)
             {
-                SpawnOneEnemy(enemy, spawners[i].transform, player);
+                for (int j = 0; j < amount / spawners.Count; j++)
+                {
+                    SpawnOneEnemy(enemy, spawners[i].transform, player);
+                }
+            }
+            for (int i = 0; i < amount; i++)
+            {
+                int currentSpawner = Random.Range(0, spawners.Count);
+                SpawnOneEnemy(enemy, spawners[currentSpawner].transform, player);
             }
         }
-        for (int i = 0; i < amount / spawners.Count; i++)
-        {
-            int currentSpawner = Random.Range(0, spawners.Count);
-            SpawnOneEnemy(enemy, spawners[currentSpawner].transform, player);
-        }
+        
     }
 
     void SpawnOneEnemy(GameObject enemy, Transform spawnPosition, GameObject target)
