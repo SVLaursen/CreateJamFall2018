@@ -6,76 +6,125 @@ public class GunController : MonoBehaviour, WeaponBehavior
 {
     public bool isSemiAuto;
     public bool isFiring;
-    public BulletController bullet;
+    public List<BulletController> bullets;
+    public PlayerController player;
     public float bulletSpeed;
     public float timeBetweenShots;
     private float shotCounter;
     public Transform firePoint;
     public float projectileDecay;
-    public int maxAmmo;
-    private int currentAmmo;
-    public int ammoInGun;
-    public int ammoCap;
-    private bool hasShot;
+    public float maxAmmo;
+    public float currentAmmo;
+    public float ammoInGun;
+    public float ammoCap;
+    public bool hasShot;
     public float damage;
-    public Vector3 pointToFace{ get; set; }
-
-    private Camera viewCam;
+    public float reloadTime;
+    private bool hasReloaded;
+    public int id;
+    public float slingShotCharge;
+    public float maxCharge;
+    public Vector3 pointToFace { get; set; }
+    private IEnumerator _reloadTime;
 
     public void Reload()
     {
+        _reloadTime = WaitTime(reloadTime);
+        StartCoroutine(_reloadTime);
+        if (hasReloaded) StopCoroutine(_reloadTime);
+
+    }
+    private IEnumerator WaitTime(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
         if (currentAmmo > 0)
         {
             currentAmmo -= ammoCap - ammoInGun;
             ammoInGun = ammoCap;
+
+            hasReloaded = false;
         }
         else
         {
             //Not Implemented
         }
     }
-
-    public void Shoot()
+    public void Shoot(int k)
     {
-        if (ammoInGun > 0)
+        switch (k)
         {
-            if (isSemiAuto)
-            {
+            case 0: //Slingshot
+                if (slingShotCharge <= maxCharge)
+                {
+                    slingShotCharge += Time.deltaTime;
+                    
+                }
+                break;
 
-                if (!hasShot)
+            case 1: //NerfGun
+                if (ammoInGun > 0)
                 {
-                    BulletController myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
-                    myBullet.deathTime = projectileDecay;
-                    myBullet.speed = bulletSpeed;
-                    myBullet.damage = damage;
-                    ammoInGun--;
-                    hasShot = true;
+                    if (isSemiAuto)
+                    {
+
+                        if (!hasShot)
+                        {
+                            BulletController myBullet = Instantiate(bullets[1], firePoint.position, firePoint.rotation) as BulletController;
+                            myBullet.deathTime = projectileDecay;
+                            myBullet.speed = bulletSpeed;
+                            myBullet.damage = damage;
+                            ammoInGun--;
+                            hasShot = true;
+                        }
+                    }
+                    else
+                    {
+                        shotCounter -= Time.deltaTime;
+                        if (shotCounter <= 0f)
+                        {
+                            shotCounter = timeBetweenShots;
+                            BulletController myBullet = Instantiate(bullets[1], firePoint.position, firePoint.rotation) as BulletController;
+                            myBullet.deathTime = projectileDecay;
+                            myBullet.speed = bulletSpeed;
+                            myBullet.damage = damage;
+                            ammoInGun--;
+                        }
+                    }
                 }
-            }
-            else
-            {
-                shotCounter -= Time.deltaTime;
-                if (shotCounter <= 0f)
-                {
-                    shotCounter = timeBetweenShots;
-                    BulletController myBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as BulletController;
-                    myBullet.deathTime = projectileDecay;
-                    myBullet.speed = bulletSpeed;
-                    myBullet.damage = damage;
-                    ammoInGun--;
-                }
-            }
+                break;
 
         }
 
 
 
+
     }
 
-    public void StopShooting()
+    public void StopShooting(int k)
     {
-        hasShot = false;
-        shotCounter = 0f;
+        switch (k)
+        {
+            case 0:
+                if (hasShot == true)
+                {
+                    BulletController mySlingBullet = Instantiate(bullets[0], firePoint.position, firePoint.rotation) as BulletController;
+                    mySlingBullet.deathTime = projectileDecay;
+                    mySlingBullet.speed = bulletSpeed*slingShotCharge;
+                    mySlingBullet.damage = damage + slingShotCharge;
+                    hasShot = false;
+                    slingShotCharge = 0;
+                }
+                break;
+
+            case 1:
+                hasShot = false;
+                shotCounter = 0f;
+                break;
+
+            case 2:
+
+                break;
+        }
     }
     public void Special()
     {
@@ -97,12 +146,34 @@ public class GunController : MonoBehaviour, WeaponBehavior
 
     public void Awake()
     {
-        viewCam = FindObjectOfType<Camera>();
     }
     // Update is called once per frame
     void Update()
     {
 
 
+
+    }
+    public void onWeaponChange(int id)
+    {
+
+        if (id == 0) //Slingshot
+        {
+
+        }
+        if (id == 1) //Nerfgun
+        {
+            isSemiAuto = true;
+            ammoCap = 30;
+            maxAmmo = ammoCap * 10;
+            currentAmmo = player.ammo[1].x;
+            ammoInGun = player.ammo[1].y;
+            damage = player.damage[1];
+        }
+        if (id == 2) //Launcher
+        {
+
+        }
+        this.id = id;
     }
 }
