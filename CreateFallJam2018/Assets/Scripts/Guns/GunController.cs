@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,9 +30,13 @@ public class GunController : MonoBehaviour, WeaponBehavior
     private CameraShake camShake;
     public List<CameraShake.Properties> shakerProperties;
 
+    // Audio
+    public AudioController audioController;
+
     private void Awake()
     {
         camShake = FindObjectOfType<CameraShake>().GetComponent<CameraShake>();
+        audioController = FindObjectOfType<AudioController>();
     }
     
     public void Reload()

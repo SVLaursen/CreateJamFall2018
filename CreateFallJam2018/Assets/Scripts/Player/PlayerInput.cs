@@ -1,8 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-	[HideInInspector] public bool paused;
+    // Audio
+    public AudioController audioController;
+
+    [HideInInspector] public bool paused;
+    [HideInInspector] public bool chargeSound;
 	
 	private PlayerController _playerController;
 	private Camera _viewCamera;
@@ -13,6 +17,7 @@ public class PlayerInput : MonoBehaviour
 		_playerController = GetComponent<PlayerController>();
 		_viewCamera = FindObjectOfType<Camera>();
 		_buildMechanic = FindObjectOfType<BuildMechanic>();
+        audioController = FindObjectOfType<AudioController>();
 	}
 	
 	private void Update ()
@@ -35,13 +40,34 @@ public class PlayerInput : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 _playerController.gun.hasShot = true;
+                // Mouse released
+                switch (_playerController.gun.id)
+                {
+                    case 0:
+                        audioController.playCatapultShoot();
+                        break;
+
+                }
             }
             if (Input.GetMouseButton(0))
             {
+                if (chargeSound == false)
+                {
+                    chargeSound = true;
+                    // Mouse released
+                    switch (_playerController.gun.id)
+                    {
+                        case 0:
+                            audioController.playCatapultPull();
+                            break;
+
+                    }
+                }
                 _playerController.gun.Shoot(_playerController.gun.id);
             }
             else if (!Input.GetMouseButton(0))
             {
+                chargeSound = false;
                 _playerController.gun.StopShooting(_playerController.gun.id);
             }
             if(Input.GetKeyDown(KeyCode.R))
