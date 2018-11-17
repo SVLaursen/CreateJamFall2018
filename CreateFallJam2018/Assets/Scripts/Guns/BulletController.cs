@@ -57,6 +57,10 @@ public class BulletController : MonoBehaviour {
                 GameObject explosion = (GameObject)Instantiate(impact, collision.transform);
                 
             }
+            if (type == 2)
+            {
+                collision.gameObject.GetComponent<Enemy>().Damage(damage);
+            }
             
         }
        // Destroy(gameObject);
