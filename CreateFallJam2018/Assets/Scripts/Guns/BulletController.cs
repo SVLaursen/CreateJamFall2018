@@ -25,14 +25,12 @@ public class BulletController : MonoBehaviour {
         {
             pointToFace = cameraRay.GetPoint(rayLenght);
             transform.LookAt(pointToFace);
-            Debug.DrawLine(gameObject.transform.position, pointToFace, Color.blue);
         }
     }
 	
 	// Update is called once per frame
 	void Update () {
         Vector3 t = new Vector3(0, 0, 1);
-        Debug.DrawLine(this.transform.position, this.transform.forward*40, Color.red);
         transform.Translate(t * speed * Time.deltaTime);
         lifeTime += Time.deltaTime;
         if(lifeTime >= deathTime)
@@ -50,11 +48,23 @@ public class BulletController : MonoBehaviour {
             {
                 collision.gameObject.GetComponent<Enemy>().Damage(damage);
                 Destroy(gameObject);
-                return;
             }
             if (type == 1)
             {
-                GameObject explosion = (GameObject)Instantiate(impact, collision.transform);
+
+                Collider[] hitCollider = Physics.OverlapSphere(collision.transform.position, 20);
+                Destroy(gameObject);
+                foreach(Collider c in hitCollider)
+                {
+                    Enemy enemy = c.GetComponent<Enemy>();
+                    if(enemy != null)
+                    {
+                        enemy.Damage(damage);
+                    }
+                    
+
+
+                }
                 
             }
             if (type == 2)
@@ -67,7 +77,10 @@ public class BulletController : MonoBehaviour {
         {
             Physics.IgnoreCollision(collision.collider, this.GetComponent<Collider>(), true);
         }
-       // Destroy(gameObject);
+        if(collision.gameObject.tag == "PROJECTILE")
+        {
+            Physics.IgnoreCollision(collision.collider, this.GetComponent<Collider>(), true);
+        }
     }
     public void Awake()
     {

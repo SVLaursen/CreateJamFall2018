@@ -11,22 +11,15 @@ public class Explosion : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        Physics.IgnoreCollision(GameObject.FindGameObjectWithTag("PLAYER").GetComponent<Collider>(), this.GetComponent<Collider>(), true);
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		if (hasExploded == false)
-        {
-            dealDamageInArea(damage);
-            hasExploded = true;
-        } else
-        {
-            Destroy(gameObject);
-        }
-	}
 
-    void dealDamageInArea(float damage)
+    }
+
+    public void dealDamageInArea(float damage)
     {
         if (colliders.Count != 0)
         {
@@ -54,5 +47,21 @@ public class Explosion : MonoBehaviour {
     private void OnTriggerExit(Collider other)
     {
         colliders.Remove(other);
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "PLAYER")
+        {
+            Physics.IgnoreCollision(collision.collider, this.GetComponent<Collider>(), true);
+        }
+        collision.gameObject.GetComponent<Enemy>().Damage(damage);
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        Destroy(gameObject);
+    }
+    private void Awake()
+    {
+        Physics.IgnoreCollision(GameObject.Find("Player").GetComponent<Collider>(), GetComponent<Collider>(), true);
     }
 }
