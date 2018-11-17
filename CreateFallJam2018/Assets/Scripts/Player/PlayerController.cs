@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
 	private Vector3 velocity;
 	private Rigidbody rb;
     public GunController gun;
+	public Animator animator;
 
     public List<Vector2> ammo;
     public List<float> bulletSpeed;
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour {
     public List<float> ammoCap;
 	public float moveSpeed = 5f;
 
+	private bool isMoving;
+
 	private void Start () {
 		rb = GetComponent<Rigidbody> ();
 	}
@@ -23,6 +26,7 @@ public class PlayerController : MonoBehaviour {
 	public void Move(Vector3 input) {
 		Vector3 _velocity = input.normalized * moveSpeed;
 		velocity = _velocity;
+		isMoving = input != Vector3.zero;
 	}
 
 	public void LookAt(Vector3 lookPoint) {
@@ -31,6 +35,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
     private void FixedUpdate() {
+	    animator.SetBool("isMoving", isMoving);
 		rb.MovePosition (rb.position + velocity * Time.fixedDeltaTime);
 	}
 }
