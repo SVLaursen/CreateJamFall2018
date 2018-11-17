@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour {
 
     private float getModifiedParam(int level, float param) // Where stats are calculated based on level
     {
-        return (param + (level / 2));
+        return (param + (level * level / 2));
     }
 
     public void Hit(GameObject target)
