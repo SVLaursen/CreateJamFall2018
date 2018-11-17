@@ -28,9 +28,9 @@ public class HUD : MonoBehaviour
 
     //public static HUD instance;
     [Header("Player Shizzle")]
-    public int health;
-    public int wave;
-    public int score;
+    public static int health;
+    public static int wave;
+    public static int score;
 
     // Use this for initialization
     private void Start()
@@ -113,6 +113,11 @@ public class HUD : MonoBehaviour
         health += damageMod;
     }
 
+    public void setHP(float inputHealth)
+    {
+        health = (int)inputHealth;
+    }
+
     public int getCurrentWave()
     {
         return wave;
@@ -128,7 +133,7 @@ public class HUD : MonoBehaviour
         return score;
     }
 
-    private void spawnPowerUp()
+    public void spawnPowerUp()
     {
         gunPrefab = gunPrefabs[Random.Range(0, gunPrefabs.Length)];
         Vector3 planeSize = plane.GetComponent<Collider>().bounds.size;
@@ -137,5 +142,18 @@ public class HUD : MonoBehaviour
         GameObject swag = Instantiate(gunPrefab, newPos, Quaternion.identity) as GameObject;
         powerUpsObjects.Add(swag);
         timeSinceSpawned.Add(powerUpLifetime);
+    }
+
+    public void deletePowerUp(GameObject inputPowerUp)
+    {
+
+        for (int i = 0; i < powerUpsObjects.Count; i++)
+        {
+            if (inputPowerUp.Equals(powerUpsObjects[i])) {
+                GameObject toDestroy = powerUpsObjects[i];
+                powerUpsObjects.RemoveAt(i);
+                Destroy(toDestroy);
+            }
+        }
     }
 }
