@@ -1908,18 +1908,6 @@ Prefab:
       propertyPath: m_Name
       value: window_fortified_v2 (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4269069542705420, guid: ebf0a87dcb85f4f27baa4c5e3e8f179f, type: 2}
-      propertyPath: m_LocalScale.z
-      value: -0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1474431955083414, guid: ebf0a87dcb85f4f27baa4c5e3e8f179f, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 1801611032545728, guid: ebf0a87dcb85f4f27baa4c5e3e8f179f, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebf0a87dcb85f4f27baa4c5e3e8f179f, type: 2}
   m_IsPrefabAsset: 0
@@ -4271,7 +4259,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a4f1408fdeb9f4519a2183e8dfe13cd2, type: 2}
+      objectReference: {fileID: 2100000, guid: 95032721e58c444f1b50674dba00e0e4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb446d5fe385b4b97beec3a60c533ceb, type: 2}
   m_IsPrefabAsset: 0
