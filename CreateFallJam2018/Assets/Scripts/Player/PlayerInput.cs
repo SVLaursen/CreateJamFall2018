@@ -32,13 +32,33 @@ public class PlayerInput : MonoBehaviour
 				//Debug.DrawLine(ray.origin,point,Color.red);
 				_playerController.LookAt(point);
 			}
+            if (Input.GetMouseButtonUp(0))
+            {
+                _playerController.gun.hasShot = true;
+            }
             if (Input.GetMouseButton(0))
             {
-                _playerController.gun.Shoot();
+                _playerController.gun.Shoot(_playerController.gun.id);
             }
             else if (!Input.GetMouseButton(0))
             {
-                _playerController.gun.StopShooting();
+                _playerController.gun.StopShooting(_playerController.gun.id);
+            }
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                _playerController.gun.Reload();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                _playerController.gun.onWeaponChange(0);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                _playerController.gun.onWeaponChange(1);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                _playerController.gun.onWeaponChange(2);
             }
             
 			//Build Mechanic
