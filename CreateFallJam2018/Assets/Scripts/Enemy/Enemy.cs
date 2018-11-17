@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour {
 
     public int level;
 
-    public float hp = 1;
+    public float hp = 100;
     public float ad = 1;
     public float ag = 1;
 
@@ -34,9 +34,10 @@ public class Enemy : MonoBehaviour {
             updateTargetPos(target); // Update the target -> keep on player if he moves
         }
 
-        if(hp <= 0)
+
+        if (hp <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 	}
 
@@ -73,6 +74,11 @@ public class Enemy : MonoBehaviour {
         this.hp -= amount;
     }
 
+    private void Attack(GameObject target, float amount)
+    {
+
+    }
+
     public List<Collider> getColliders() // Get the colliders touching the enemy
     {
         return colliders;
@@ -82,7 +88,7 @@ public class Enemy : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "ENEMY")
+        if (other.gameObject.tag == "PLAYER")
         {
             
             if (!colliders.Contains(other))
