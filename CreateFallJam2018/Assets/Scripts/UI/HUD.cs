@@ -18,26 +18,22 @@ public class HUD : MonoBehaviour
     private static List<float> timeSinceSpawned;
 
     // HUD Text Objects
-    public GameObject waveShit;
-    public static Text waveText;
-    public GameObject scoreShit;
-    public static Text scoreText;
+    public Text waveText;
+    public  Text scoreText;
 
     private static string waveInitText;
     private static string scoreInitText;
 
     //public static HUD instance;
     [Header("Player Shizzle")]
-    public static int health;
-    public static int wave;
-    public static int score;
+    public int health;
+    public int wave;
+    public int score;
 
     // Use this for initialization
     private void Start()
     {
-        waveText = waveShit.GetComponent<Text>();
         waveInitText = waveText.text;
-        scoreText = scoreShit.GetComponent<Text>();
         scoreInitText = scoreText.text;
         powerUpsObjects = new List<GameObject>();
         timeSinceSpawned = new List<float>();
