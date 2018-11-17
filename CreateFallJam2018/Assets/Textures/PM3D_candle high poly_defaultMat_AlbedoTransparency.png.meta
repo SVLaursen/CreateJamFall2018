@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 78f901eb4b5654f4bb01f3d23ea1297c
+guid: 8f73684584e4446f789a318a9508c5ad
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -49,7 +49,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 0
   textureShape: 1
