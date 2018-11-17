@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -272,6 +272,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: shakerProperties.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4483321467698054, guid: 3341bc6e415bc426cb4778c4332b4f0b, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -381,6 +386,71 @@ Prefab:
     - target: {fileID: 1851100306016326, guid: 3341bc6e415bc426cb4778c4332b4f0b, type: 2}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: shakerProperties.Array.data[0].angle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: shakerProperties.Array.data[0].speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: shakerProperties.Array.data[0].strenght
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: shakerProperties.Array.data[0].noisePercent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: shakerProperties.Array.data[0].duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: shakerProperties.Array.data[1].strenght
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: shakerProperties.Array.data[1].angle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: shakerProperties.Array.data[1].speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: shakerProperties.Array.data[1].duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: shakerProperties.Array.data[2].angle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: shakerProperties.Array.data[2].strenght
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: shakerProperties.Array.data[2].speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114826712749437016, guid: 3341bc6e415bc426cb4778c4332b4f0b,
+        type: 2}
+      propertyPath: shakerProperties.Array.data[2].duration
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3341bc6e415bc426cb4778c4332b4f0b, type: 2}
@@ -1847,10 +1917,8 @@ MonoBehaviour:
   player: {fileID: 960397449}
   currentEnemies: []
   spawners:
-  - {fileID: 0}
   - {fileID: 251397371}
   - {fileID: 1992267288}
-  - {fileID: 0}
   hasSpawned: 1
   waveDuration: 30
   waveTimeLeft: 0
