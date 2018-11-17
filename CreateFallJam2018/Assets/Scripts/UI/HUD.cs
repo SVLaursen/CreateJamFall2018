@@ -7,46 +7,30 @@ public class HUD : MonoBehaviour
 {
     public GameObject waveShit;
     public static Text waveText;
-    public GameObject topLeft;
+    public GameObject scoreShit;
     public static Text scoreText;
 
     private static string waveInitText;
     private static string scoreInitText;
 
     //public static HUD instance;
-    private static int health;
-    private static int wave;
-    private static int score;
-
-    /*
-    private void Awake()
-    {
-        if(instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        instance = this;
-    }
-    */
+    [Header("Player Shizzle")]
+    public int health;
+    public int wave;
+    public int score;
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
-        health = 100;
-        wave = 0;
-        score = 0;
         waveText = waveShit.GetComponent<Text>();
         waveInitText = waveText.text;
-        scoreText = topLeft.GetComponent<Text>();
+        scoreText = scoreShit.GetComponent<Text>();
         scoreInitText = scoreText.text;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        //Debug.Log("Helloooooo");
         if (Input.GetButton("Jump"))
         {
             addToWave(1);
@@ -72,6 +56,15 @@ public class HUD : MonoBehaviour
         score += scoreMod;
     }
 
+    public void detractScore(int detract)
+    {
+        score -= detract;
+    }
+
+    public int getScore()
+    {
+        return score;
+    }
 
     public void addToWave(int waveMod)
     {

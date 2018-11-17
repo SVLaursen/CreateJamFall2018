@@ -7,7 +7,7 @@ public class PlayerInput : MonoBehaviour
 	private PlayerController _playerController;
 	private Camera _viewCamera;
 	private BuildMechanic _buildMechanic;
-    public Vector3 point;
+    public Vector3 point; //??????
 	private void Awake ()
 	{
 		_playerController = GetComponent<PlayerController>();
