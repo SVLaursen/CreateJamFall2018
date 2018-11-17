@@ -41,12 +41,14 @@
           </e>
           <e p="UI" t="Include">
             <e p="HUD.cs" t="Include" />
+            <e p="Wobble.cs" t="Include" />
           </e>
           <e p="World" t="Include">
             <e p="RoomView.cs" t="Include" />
           </e>
         </e>
         <e p="Shaders" t="Include">
+          <e p="LIquid.shader" t="Include" />
           <e p="StencilMask.shader" t="Include" />
           <e p="StencilObject.shader" t="Include" />
         </e>
