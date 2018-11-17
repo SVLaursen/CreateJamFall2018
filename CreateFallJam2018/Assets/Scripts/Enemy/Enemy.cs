@@ -86,8 +86,21 @@ public class Enemy : MonoBehaviour {
 
     public void Damage(float amount)
     {
-        this.hp -= amount;
         audioController.playHit();
+        if (floatingTextPrefab)
+        {
+            showFloatingText(amount);
+        }
+        
+        hp -= amount;
+        
+    }
+
+    public void showFloatingText(float amount)
+    {
+        amount = (int)amount;
+        var b = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
+        b.GetComponent<TextMesh>().text = amount.ToString();
     }
 
     private void Attack(GameObject target, float amount)

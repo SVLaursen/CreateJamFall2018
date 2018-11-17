@@ -21,7 +21,7 @@ public class GunController : MonoBehaviour, WeaponBehavior
     public float damage;
     public float reloadTime;
     private bool hasReloaded;
-    public int id;
+    public int _id;
     public float slingShotCharge;
     public float maxCharge;
     public Vector3 pointToFace { get; set; }
@@ -107,9 +107,24 @@ public class GunController : MonoBehaviour, WeaponBehavior
                 }
                 break;
 
+            case 2: //Pillow Launcher
+                if(ammoInGun > 0)
+                {
+                    if (!hasShot)
+                    {
+                        hasShot = true;
+                        BulletController myPillow = Instantiate(bullets[2], firePoint.position, firePoint.rotation) as BulletController;
+                        myPillow.deathTime = projectileDecay;
+                        myPillow.speed = bulletSpeed;
+                        myPillow.damage = damage;
+                        ammoInGun--;
+                        camShake.StartShake(shakerProperties[2]);
+
+                    }
+                }
+                break;
+
         }
-
-
 
 
     }
@@ -124,9 +139,9 @@ public class GunController : MonoBehaviour, WeaponBehavior
                     BulletController mySlingBullet = Instantiate(bullets[0], firePoint.position, firePoint.rotation) as BulletController;
                     mySlingBullet.deathTime = projectileDecay;
                     mySlingBullet.speed = bulletSpeed*slingShotCharge;
-                    mySlingBullet.damage = damage + slingShotCharge;
+                    mySlingBullet.damage = damage * slingShotCharge;
                     hasShot = false;
-                    slingShotCharge = 0;
+                    slingShotCharge = 0f;
                 }
                 break;
 
@@ -136,7 +151,7 @@ public class GunController : MonoBehaviour, WeaponBehavior
                 break;
 
             case 2:
-
+                hasShot = false;
                 break;
         }
     }
@@ -160,13 +175,14 @@ public class GunController : MonoBehaviour, WeaponBehavior
     
     public void onWeaponChange(int id)
     {
-        this.id = id;
+        _id = id;
         ammoCap = player.ammoCap[id];
         maxAmmo = player.maxAmmo[id];
         currentAmmo = player.ammo[id].x;
         ammoInGun = player.ammo[id].y;
         damage = player.damage[id];
         bulletSpeed = player.bulletSpeed[id];
+        hasShot = false;
 
         if (id == 0) //Slingshot
         {
@@ -179,7 +195,7 @@ public class GunController : MonoBehaviour, WeaponBehavior
         }
         if (id == 2) //Launcher
         {
-
+            isSemiAuto = true;
         }
     }
 }

@@ -91,7 +91,6 @@ public class EnemyManager : MonoBehaviour {
                 SpawnOneEnemy(enemy, spawners[currentSpawner].transform, player);
             }
         }
-        
     }
 
     void SpawnOneEnemy(GameObject enemy, Transform spawnPosition, GameObject target)
