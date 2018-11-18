@@ -10,6 +10,7 @@ TagManager:
   - EXPLOSION
   - PROJECTILE
   - FOCALPOINT
+  - HUD
   layers:
   - Default
   - TransparentFX
