@@ -10,6 +10,9 @@
           <e p="RoomViewEditor.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
+          <e p="Audio" t="Include">
+            <e p="AudioController.cs" t="Include" />
+          </e>
           <e p="BuildMechanic" t="Include">
             <e p="BuildMechanic.cs" t="Include" />
             <e p="PillowWall.cs" t="Include" />
@@ -30,6 +33,9 @@
               <e p="WeaponBehavior.cs" t="Include" />
             </e>
           </e>
+          <e p="MainMenu" t="Include">
+            <e p="MainMenu.cs" t="Include" />
+          </e>
           <e p="Modular" t="Include">
             <e p="FieldOfView.cs" t="Include" />
             <e p="Gizmo.cs" t="Include" />
@@ -40,6 +46,8 @@
             <e p="PlayerStats.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
+            <e p="FloatingText.cs" t="Include" />
+            <e p="GameOver.cs" t="Include" />
             <e p="HUD.cs" t="Include" />
             <e p="Wobble.cs" t="Include" />
           </e>

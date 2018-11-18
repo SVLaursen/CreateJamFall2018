@@ -256,7 +256,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1052655664906838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 10.331085, y: 0.14932254, z: 2.270504}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4850273351702646}
@@ -365,7 +365,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: a9ec1a1046c524bd0a9378f9a3ed345b, type: 3}
+  - {fileID: 2100000, guid: e07d961bcb1e74c1d824510eed17b268, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -400,7 +400,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 92a50ce78341240768ba7355a8905975, type: 3}
+  - {fileID: 2100000, guid: e07d961bcb1e74c1d824510eed17b268, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -470,7 +470,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: a9ec1a1046c524bd0a9378f9a3ed345b, type: 3}
+  - {fileID: 2100000, guid: e07d961bcb1e74c1d824510eed17b268, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -505,7 +505,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 92a50ce78341240768ba7355a8905975, type: 3}
+  - {fileID: 2100000, guid: e07d961bcb1e74c1d824510eed17b268, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -540,7 +540,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 92a50ce78341240768ba7355a8905975, type: 3}
+  - {fileID: 2100000, guid: e07d961bcb1e74c1d824510eed17b268, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -739,3 +739,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallHealth: 100
   dmgPerHit: 5
+  floatingTextPrefab: {fileID: 1540532769944792, guid: e26f05e35c1098a44b51fbdfe0acd481,
+    type: 2}

@@ -14,6 +14,6 @@ public class FloatingText : MonoBehaviour
 
     private void Update()
     {
-        transform.LookAt(GameObject.FindGameObjectWithTag("MainCamera").transform);
+        transform.LookAt(GameObject.FindGameObjectWithTag("FOCALPOINT").transform);
     }
 }

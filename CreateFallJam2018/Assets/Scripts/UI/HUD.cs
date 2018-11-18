@@ -15,16 +15,12 @@ public class HUD : MonoBehaviour
     private float nextActionTime = 0.0f;
     public float powerUpLifetime;
     private List<GameObject> powerUpsObjects;
-    private static List<float> timeSinceSpawned;
+    private List<float> timeSinceSpawned;
 
     // HUD Text Objects
     public Text waveText;
     public Text scoreText;
-    public Text HPText;
-
-    private static string waveInitText;
-    private static string scoreInitText;
-    private static string healthInitText;
+    public Slider hpSlider;
 
     //public static HUD instance;
     [Header("Player Shizzle")]
@@ -32,25 +28,42 @@ public class HUD : MonoBehaviour
     public int wave;
     public int score;
 
+    private float minutes;
+    private float seconds;
+    private float timer;
+    
+    //Game Over Screen
+    public GameObject gameOverCanvas;
+
     // Use this for initialization
     private void Start()
     {
-        waveInitText = waveText.text;
-        scoreInitText = scoreText.text;
-        healthInitText = HPText.text;
         powerUpsObjects = new List<GameObject>();
         timeSinceSpawned = new List<float>();
         powerUpLifetime = 10.0f;
+        gameOverCanvas.SetActive(false);
     }
 
     // Update is called once per frame
     private void Update()
     {
-        //waveText.text = waveText.text.Substring(0, waveText.text.Length-wave.ToString().Length) + wave.ToString();
-        waveText.text = waveInitText + wave.ToString();
-        scoreText.text = scoreInitText + score.ToString();
-        HPText.text = healthInitText + health.ToString();
+        if (FindObjectOfType<PlayerStats>().GetComponent<PlayerStats>().hp <= 0) GameOver();
 
+        timer = timer + Time.deltaTime;
+        minutes = Mathf.Floor(timer / 60);
+        seconds = Mathf.RoundToInt(timer % 60);
+        
+        //waveText.text = waveText.text.Substring(0, waveText.text.Length-wave.ToString().Length) + wave.ToString();
+        if (health >= 0)
+        {
+            waveText.text = "0" + minutes + ":" + Mathf.RoundToInt(seconds);
+        }
+        else
+        {
+            waveText.text = waveText.text;
+        }
+        scoreText.text = "Score: " + score;
+        hpSlider.value = (float) FindObjectOfType<PlayerStats>().hp / 100;
 
         timeUntilSpawn -= Time.deltaTime;
         if (timeUntilSpawn <= 0)
@@ -159,5 +172,11 @@ public class HUD : MonoBehaviour
                 Destroy(toDestroy);
             }
         }
+    }
+
+    public void GameOver()
+    {
+        FindObjectOfType<PlayerInput>().GetComponent<PlayerInput>().paused = true;
+        gameOverCanvas.SetActive(true);
     }
 }
