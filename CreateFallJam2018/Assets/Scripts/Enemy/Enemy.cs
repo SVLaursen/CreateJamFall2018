@@ -1,9 +1,11 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour {
+
+    public AudioController audioController;
 
     NavMeshAgent agent;
     GameObject target;
@@ -26,6 +28,7 @@ public class Enemy : MonoBehaviour {
 	void Start () {
         agent = GetComponent<NavMeshAgent>();
         c = GetComponent<SphereCollider>();
+        audioController = FindObjectOfType<AudioController>();
 	}
 	
 	// Update is called once per frame
@@ -83,6 +86,7 @@ public class Enemy : MonoBehaviour {
 
     public void Damage(float amount)
     {
+        audioController.playHit();
         if (floatingTextPrefab)
         {
             showFloatingText(amount);
