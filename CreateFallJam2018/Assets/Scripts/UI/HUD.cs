@@ -37,8 +37,6 @@ public class HUD : MonoBehaviour
         powerUpsObjects = new List<GameObject>();
         timeSinceSpawned = new List<float>();
         powerUpLifetime = 10.0f;
-        score = 0;
-        wave = 0;
         gameOverCanvas.SetActive(false);
     }
 
@@ -50,8 +48,7 @@ public class HUD : MonoBehaviour
         //waveText.text = waveText.text.Substring(0, waveText.text.Length-wave.ToString().Length) + wave.ToString();
         waveText.text = "Wave: " + wave;
         scoreText.text = "Score: " + score;
-
-        hpSlider.value = FindObjectOfType<PlayerStats>().hp;
+        hpSlider.value = (float) FindObjectOfType<PlayerStats>().hp / 100;
 
         timeUntilSpawn -= Time.deltaTime;
         if (timeUntilSpawn <= 0)

@@ -25,7 +25,6 @@ public class EnemyManager : MonoBehaviour {
     public int spawnAmount = 0;
     public int waveCounter = 0;
 
-
     private float timeLeft;
 
 	// Use this for initialization
@@ -57,15 +56,18 @@ public class EnemyManager : MonoBehaviour {
                 }
             } else
             {
-                isInWave = false;
                 chillTimeLeft = timeToChill;
+                isInWave = false;
             }
             
-        } else
+        } 
+        else
         {
+            
             chillTimeLeft -= Time.deltaTime;
             if (chillTimeLeft < 0)
             {
+                if(!isInWave) FindObjectOfType<HUD>().wave += 1;
                 isInWave = true;
                 waveTimeLeft = waveDuration;
             }
