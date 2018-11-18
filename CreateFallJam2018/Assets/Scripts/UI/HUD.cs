@@ -45,7 +45,7 @@ public class HUD : MonoBehaviour
         waveText.text = "Wave: " + wave;
         scoreText.text = "Score: " + score;
 
-        hpSlider.value = health;
+        hpSlider.value = FindObjectOfType<PlayerStats>().hp;
 
         timeUntilSpawn -= Time.deltaTime;
         if (timeUntilSpawn <= 0)

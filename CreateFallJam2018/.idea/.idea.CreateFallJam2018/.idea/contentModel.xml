@@ -30,6 +30,9 @@
               <e p="WeaponBehavior.cs" t="Include" />
             </e>
           </e>
+          <e p="MainMenu" t="Include">
+            <e p="MainMenu.cs" t="Include" />
+          </e>
           <e p="Modular" t="Include">
             <e p="FieldOfView.cs" t="Include" />
             <e p="Gizmo.cs" t="Include" />
