@@ -27,6 +27,9 @@ public class HUD : MonoBehaviour
     public int health;
     public int wave;
     public int score;
+    
+    //Game Over Screen
+    public GameObject gameOverCanvas;
 
     // Use this for initialization
     private void Start()
@@ -36,11 +39,14 @@ public class HUD : MonoBehaviour
         powerUpLifetime = 10.0f;
         score = 0;
         wave = 0;
+        gameOverCanvas.SetActive(false);
     }
 
     // Update is called once per frame
     private void Update()
     {
+        if (FindObjectOfType<PlayerStats>().GetComponent<PlayerStats>().hp <= 0) GameOver();
+        
         //waveText.text = waveText.text.Substring(0, waveText.text.Length-wave.ToString().Length) + wave.ToString();
         waveText.text = "Wave: " + wave;
         scoreText.text = "Score: " + score;
@@ -154,5 +160,11 @@ public class HUD : MonoBehaviour
                 Destroy(toDestroy);
             }
         }
+    }
+
+    public void GameOver()
+    {
+        FindObjectOfType<PlayerInput>().GetComponent<PlayerInput>().paused = true;
+        gameOverCanvas.SetActive(true);
     }
 }

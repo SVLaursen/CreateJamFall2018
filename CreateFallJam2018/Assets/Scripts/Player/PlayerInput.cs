@@ -40,35 +40,21 @@ public class PlayerInput : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 _playerController.gun.hasShot = true;
-                // Mouse released
-                switch (_playerController.gun.id)
-                {
-                    case 0:
-                        audioController.playCatapultShoot();
-                        break;
-
-                }
+	            audioController.playCatapultShoot();
             }
             if (Input.GetMouseButton(0))
             {
                 if (chargeSound == false)
                 {
                     chargeSound = true;
-                    // Mouse released
-                    switch (_playerController.gun.id)
-                    {
-                        case 0:
-                            audioController.playCatapultPull();
-                            break;
-
-                    }
+	                audioController.playCatapultPull();
                 }
-                _playerController.gun.Shoot(_playerController.gun.id);
+                _playerController.gun.Shoot(0);
             }
             else if (!Input.GetMouseButton(0))
             {
                 chargeSound = false;
-                _playerController.gun.StopShooting(_playerController.gun.id);
+                _playerController.gun.StopShooting(0);
             }
             if(Input.GetKeyDown(KeyCode.R))
             {
