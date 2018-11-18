@@ -27,6 +27,10 @@ public class HUD : MonoBehaviour
     public int health;
     public int wave;
     public int score;
+
+    private float minutes;
+    private float seconds;
+    private float timer;
     
     //Game Over Screen
     public GameObject gameOverCanvas;
@@ -44,9 +48,20 @@ public class HUD : MonoBehaviour
     private void Update()
     {
         if (FindObjectOfType<PlayerStats>().GetComponent<PlayerStats>().hp <= 0) GameOver();
+
+        timer = timer + Time.deltaTime;
+        minutes = Mathf.Floor(timer / 60);
+        seconds = Mathf.RoundToInt(timer % 60);
         
         //waveText.text = waveText.text.Substring(0, waveText.text.Length-wave.ToString().Length) + wave.ToString();
-        waveText.text = "Wave: " + wave;
+        if (health >= 0)
+        {
+            waveText.text = "0" + minutes + ":" + Mathf.RoundToInt(seconds);
+        }
+        else
+        {
+            waveText.text = waveText.text;
+        }
         scoreText.text = "Score: " + score;
         hpSlider.value = (float) FindObjectOfType<PlayerStats>().hp / 100;
 
