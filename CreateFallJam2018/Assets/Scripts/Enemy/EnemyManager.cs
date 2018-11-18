@@ -12,6 +12,8 @@ public class EnemyManager : MonoBehaviour {
 
     public List<GameObject> spawners;
 
+    GameObject hud;
+
     public bool hasSpawned = true;
 
     public float waveDuration = 30;
@@ -31,6 +33,7 @@ public class EnemyManager : MonoBehaviour {
 	void Start () {
         isInWave = false;
         timeLeft = waveTimer;
+        hud = GameObject.FindGameObjectWithTag("HUD");
 	}
 	
 	// Update is called once per frame
@@ -51,7 +54,7 @@ public class EnemyManager : MonoBehaviour {
                 if (hasSpawned == false)
                 {
                     waveCounter += 1;
-                    SpawnWave(spawners, spawnAmount);
+                    SpawnWave(spawners, spawnAmount + (waveCounter / 2));
                     hasSpawned = true;
                 }
             } else
@@ -67,7 +70,7 @@ public class EnemyManager : MonoBehaviour {
             chillTimeLeft -= Time.deltaTime;
             if (chillTimeLeft < 0)
             {
-                if(!isInWave) FindObjectOfType<HUD>().wave += 1;
+                //if(!isInWave) FindObjectOfType<HUD>().wave += 1;
                 isInWave = true;
                 waveTimeLeft = waveDuration;
             }
