@@ -9,6 +9,7 @@ TagManager:
   - PILLOWWALL
   - EXPLOSION
   - PROJECTILE
+  - FOCALPOINT
   layers:
   - Default
   - TransparentFX
